@@ -1,0 +1,61 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>Add a Listing</h4>
+    </div>
+  
+    <div class="panel-body">
+      <form #newCountryForm="ngForm" (ngSubmit)="onCountrySubmit(newCountryForm.value)">
+        <div class="form-group col-sm-4">
+          <label for="name" class="">Country Name</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Country Name"
+            name="name"
+            ngModel
+            required>
+        </div>
+        <div class="form-group col-sm-4">
+          <label for="population" class="">Country Population</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Population"
+            name="population"
+            ngModel
+            required>
+        </div>
+        <div class="form-group col-sm-6">
+          <label for="region" class="">Region</label>
+          <textarea
+            type="text"
+            class="form-control"
+            placeholder="Region"
+            name="region"
+            ngModel
+            required>
+          </textarea>
+        </div>
+
+        <div class="form-group col-sm-2">
+          <label for="languages" class="">Languages</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Languages"
+            name="languages"
+            ngModel
+            required>
+        </div>
+        <div class="form-group col-sm-12">
+          <button
+            class="btn btn-primary listing-button"
+            type="submit"
+            ng-show="addListing">
+              Add
+          </button>
+        </div>
+      </form>
+  
+    </div>  
+  </div>
