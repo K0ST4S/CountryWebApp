@@ -15,7 +15,7 @@ export class CountryDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._http.countryDetailsSubject.subscribe(data => {
+    this._http.updateDetailsPageEvent.subscribe(data => {
       this.country = data;
     });
   }

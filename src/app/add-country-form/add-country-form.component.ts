@@ -20,6 +20,6 @@ export class AddCountryFormComponent implements OnInit {
 
   onCountrySubmit(data) : void {
     console.log(data);
-    this._http.addCountry(data);
+    this._http.invokeAddCountry(data);
   }
 }

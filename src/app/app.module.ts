@@ -13,6 +13,7 @@ import { UtilService } from "./services/util.service"
 import { HttpService } from './services/http.service';
 import { SortByPipe } from './pipes/sort-by.pipe';
 import { HomeComponent } from './home/home.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    NgxPaginationModule
   ],
   providers: [HttpService, UtilService],
   bootstrap: [AppComponent]

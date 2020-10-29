@@ -17,6 +17,7 @@ export class CountriesListComponent implements OnInit {
   ];
   sortField: string = 'Population';
   sortDirection: string = 'asc';
+  p: number = 1;
   constructor(private _http: HttpService,
     private utilService: UtilService) { }
 
@@ -26,9 +27,20 @@ export class CountriesListComponent implements OnInit {
       this.countries = data;
     });
 
-    this._http.newCountrySubject.subscribe(data => {
+    this._http.addCountryEvent.subscribe(data => {
       this.countries = [data, ...this.countries];
     });
+
+    this._http.countryDeleteEvent.subscribe(data => {
+      this.deleteCountry(data);
+    });
+  }
+
+  deleteCountry(country: any) {
+    const index: number = this.countries.indexOf(country);
+    if (index !== -1) {
+        this.countries.splice(index, 1);
+    }        
   }
 }
 

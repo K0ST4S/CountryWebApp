@@ -9,8 +9,9 @@ import { Country } from '../country';
 })
 export class HttpService {
 
-  public newCountrySubject = new Subject<any>();
-  public countryDetailsSubject = new ReplaySubject<Country>(undefined);
+  public countryDeleteEvent = new Subject<Country>();
+  public addCountryEvent = new Subject<any>();
+  public updateDetailsPageEvent = new ReplaySubject<Country>(undefined);
   constructor(private http: HttpClient) { }
 
   getCountries() : Observable<any>
@@ -18,14 +19,19 @@ export class HttpService {
     return this.http.get<any>('https://restcountries.eu/rest/v2/all');
   }
 
-  addCountry(data:any)
+  invokeAddCountry(data:any)
   {
-    this.newCountrySubject.next(data)
+    this.addCountryEvent.next(data)
   }
 
-  updateDetailsPage(data: Country)
+  invokeUpdateDetailsPage(data: Country)
   {
     console.log("updateDetailsPage");
-    this.countryDetailsSubject.next(data);
+    this.updateDetailsPageEvent.next(data);
+  }
+
+  invokeCountryDelete(data: Country)
+  {
+      this.countryDeleteEvent.next(data);
   }
 }
