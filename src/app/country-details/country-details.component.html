@@ -25,12 +25,14 @@
                                 <h3>
                                     <i class="glyphicon glyphicon-globe"></i>
                                     Languages
-                                    
+
                                     <div *ngFor="let lang of country.languages; ; index as i">
                                         <h3><span> {{i+1}}. {{ lang.name }} </span></h3>
                                         <h4><span>Native Language Name: {{ lang.nativeName }} </span> </h4>
-                                        <h5>Iso Code 1: <span class="label label-default">{{ lang.iso639_1 }}</span></h5>
-                                        <h5>Iso Code 2: <span class="label label-default">{{ lang.iso639_2 }}</span></h5>
+                                        <h5>Iso Code 1: <span class="label label-default">{{ lang.iso639_1 }}</span>
+                                        </h5>
+                                        <h5>Iso Code 2: <span class="label label-default">{{ lang.iso639_2 }}</span>
+                                        </h5>
                                     </div>
                                 </h3>
 

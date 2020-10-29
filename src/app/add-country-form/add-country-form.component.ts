@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild, ViewChildDecorator } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpService } from './../services/http.service';
-import { UtilService } from './../services/util.service';
 
 @Component({
   selector: 'app-add-country-form',
@@ -9,17 +8,48 @@ import { UtilService } from './../services/util.service';
   styleUrls: ['./add-country-form.component.scss']
 })
 export class AddCountryFormComponent implements OnInit {
+  nestedForm: FormGroup;
 
-  @ViewChild('newCountryForm') newCountryForm: NgForm;
-  propertyTypes: Array<string> = ['One', 'Two'];
-  constructor(public _http: HttpService,
-    private utilService: UtilService) { }
-
-  ngOnInit(): void {
+  constructor(public _http: HttpService, private _fb: FormBuilder) {
   }
 
-  onCountrySubmit(data) : void {
-    console.log(data);
-    this._http.invokeAddCountry(data);
+  ngOnInit(): void {
+    this.nestedForm = this._fb.group({
+      name: [null, Validators.required],
+      region: [null, Validators.required],
+      flag: [null, Validators.required],
+      population: [null, Validators.required],
+      languages: this._fb.array([this.addLanguagesGroup()])
+    });
+  }
+
+  addLanguagesGroup()
+  {
+    return this._fb.group({
+      name: [null, Validators.required],
+      nativeName: [null, Validators.required],
+      iso639_1: [null, Validators.required],
+      iso639_2: [null, Validators.required]
+    });
+  }
+
+  addLanguage()
+  {
+    this.languagesArray.push(this.addLanguagesGroup());
+  }
+
+  removeLanguage(index: number)
+  {
+    this.languagesArray.removeAt(index);
+  }
+
+  submitHandler() : void {
+    console.log(this.nestedForm.value);
+    this._http.invokeAddCountry(this.nestedForm.value);
+  }
+
+  get languagesArray()
+  {
+    return <FormArray>this.nestedForm.get('languages');
   }
 }

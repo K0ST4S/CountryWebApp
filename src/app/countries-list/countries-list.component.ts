@@ -23,7 +23,6 @@ export class CountriesListComponent implements OnInit {
 
   ngOnInit() {
     this._http.getCountries().subscribe(data => {
-      console.log(data);
       this.countries = data;
     });
 

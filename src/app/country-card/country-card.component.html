@@ -4,23 +4,19 @@
             {{ country.name }}
         </h3>
         <h3>
-        <i class="glyphicon glyphicon-user"></i> 
+            <i class="glyphicon glyphicon-user"></i>
             {{ country.population }}
         </h3>
         <h4>
-        <i class="glyphicon glyphicon-map-marker"></i> 
+            <i class="glyphicon glyphicon-map-marker"></i>
             {{ country.region }}
         </h4>
 
         <hr>
 
-        <button class="btn btn-sm btn-success mt-auto" 
-        (click)="onUpdateDetailsPage()"
-        routerLink="/details"
-        > Details </button>
+        <button class="btn btn-sm btn-success mt-auto" (click)="onUpdateDetailsPage()" routerLink="/details"> Details
+        </button>
 
-        <button class="btn btn-sm btn-danger mt-auto" 
-        (click)="deleteCountry()"
-        > Delete </button>
+        <button class="btn btn-sm btn-danger mt-auto" (click)="deleteCountry()"> Delete </button>
     </div>
 </div>

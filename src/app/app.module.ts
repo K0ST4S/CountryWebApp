@@ -7,7 +7,7 @@ import { CountriesListComponent } from './countries-list/countries-list.componen
 import { HttpClientModule } from '@angular/common/http';
 import { CountryCardComponent } from './country-card/country-card.component';
 import { AddCountryFormComponent } from './add-country-form/add-country-form.component';
-import { FormsModule }   from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule  }   from '@angular/forms';
 import { CommonModule } from "@angular/common";
 import { UtilService } from "./services/util.service"
 import { HttpService } from './services/http.service';
@@ -31,7 +31,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     HttpClientModule,
     FormsModule,
     CommonModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
   providers: [HttpService, UtilService],
   bootstrap: [AppComponent]
