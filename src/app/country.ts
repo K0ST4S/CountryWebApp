@@ -1,3 +1,5 @@
+import { Language } from './Language';
+
 export interface Country {
     name: string,
     capital: string,
@@ -5,5 +7,6 @@ export interface Country {
     subregion: string,
     flag: string,
     area: number,
-    population: number
+    population: number,
+    languages: Array<Language>
 }

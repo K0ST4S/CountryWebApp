@@ -1,24 +1,48 @@
-<div *ngIf="country != undefined" class="thumbnail">
-    <img src="{{country.flag}}" alt="" class="flag">
-    <div class="caption">
-        <h4>
-        <h2>
-            {{ country.name }}
-        </h2>
-        </h4>
-        <h3>
-        <i class="glyphicon glyphicon-user"></i> 
-            {{ country.population }}
-        </h3>
-        <h4>
-        <i class="glyphicon glyphicon-map-marker"></i> 
-            {{ country.region }}
-        </h4>
+<div class="container horizontal-center">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-sm-4">
+                        <div *ngIf="country != undefined" class="panel">
 
-        <hr>
+                            <div class="caption">
+                                <h3>
+                                    Country Name: {{ country.name }}
+                                </h3>
+                                <h3> Country Flag </h3>
+                                <img src="{{country.flag}}" alt="" class="flag">
 
-        <button class="btn btn-sm btn-success" routerLink="">
-        Back
-        </button>
+                                <h3>
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    Population: {{ country.population }}
+                                </h3>
+                                <h3>
+                                    <i class="glyphicon glyphicon-map-marker"></i>
+                                    Region: {{ country.region }}
+                                </h3>
+
+                                <h3>
+                                    <i class="glyphicon glyphicon-globe"></i>
+                                    Languages
+                                    
+                                    <div *ngFor="let lang of country.languages; ; index as i">
+                                        <h3><span> {{i+1}}. {{ lang.name }} </span></h3>
+                                        <h4><span>Native Language Name: {{ lang.nativeName }} </span> </h4>
+                                        <h5>Iso Code 1: <span class="label label-default">{{ lang.iso639_1 }}</span></h5>
+                                        <h5>Iso Code 2: <span class="label label-default">{{ lang.iso639_2 }}</span></h5>
+                                    </div>
+                                </h3>
+
+                                <hr>
+                                <button class="btn btn-sm btn-success" routerLink="">
+                                    Back
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,11 +1,8 @@
 <div class="thumbnail">
-    <img src="{{country.flag}}" alt="" class="flag">
     <div class="caption">
-        <h4>
-        <h2>
+        <h3 class="countryName">
             {{ country.name }}
-        </h2>
-        </h4>
+        </h3>
         <h3>
         <i class="glyphicon glyphicon-user"></i> 
             {{ country.population }}
@@ -17,7 +14,7 @@
 
         <hr>
 
-        <button class="btn btn-sm btn-success" 
+        <button class="btn btn-sm btn-success mt-auto" 
         (click)="onUpdateDetailsPage()"
         routerLink="/details"
         > Details </button>

@@ -12,14 +12,10 @@ export class CountryDetailsComponent implements OnInit {
   country: Country;
   constructor(private _http: HttpService) 
   { 
-    console.log("constr");
   }
 
   ngOnInit(): void {
-    console.log("on init");
     this._http.countryDetailsSubject.subscribe(data => {
-      console.log("Updating data to:");
-      console.log(data);
       this.country = data;
     });
   }

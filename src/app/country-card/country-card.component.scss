@@ -1,8 +1,3 @@
-.thumbnail {
-    min-height: 
-    400px;
-}
-
 .label {
     display: block;
 }
@@ -11,4 +6,8 @@
     object-fit: cover;
   width: auto;
   height: 100px;
+}
+
+.countryName {
+    min-height: 80px;
 }
