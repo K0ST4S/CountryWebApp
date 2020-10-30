@@ -12,28 +12,32 @@
             <div class="form-group col-sm-4">
               <label for="nameText" class="">Country Name</label>
               <input type="text" formControlName="name" [ngClass]="{'form-control': true,
-              'is-invalid': name.invalid && name.touched,
-              'is-valid': name.valid}" id="nameText" placeholder="Enter name">
-              <small id="fnHelp" *ngIf="name.errors?.required && name.touched" class="form-text custom-invalid-feedback">Field is required</small>
-              <small id="fnHelp" *ngIf="name.errors?.minlength && name.touched" class="form-text custom-invalid-feedback">Value must contain atleast 2 characters</small>
+              'is-invalid': nestedForm.controls.name.invalid && nestedForm.controls.name.touched,
+              'is-valid': nestedForm.controls.name.valid}" id="nestedForm.controls.nameText" placeholder="Enter country name">
+              <small id="fnHelp" *ngIf="nestedForm.controls.name.errors?.required && nestedForm.controls.name.touched" class="form-text custom-invalid-feedback">Field is required</small>
             </div>
             <div class="form-group col-sm-4">
               <label for="populationText" class="">Country Population</label>
               <input type="text" formControlName="population" [ngClass]="{'form-control': true,
-              'is-invalid': population.invalid && population.touched,
-              'is-valid': population.valid}" id="populationText" placeholder="Enter population">
-              <small id="fnHelp" *ngIf="population.errors?.required && population.touched" class="form-text custom-invalid-feedback">Field is required</small>
-              <small id="fnHelp" *ngIf="population.errors?.minlength && population.touched" class="form-text custom-invalid-feedback">Value must contain atleast 2 characters</small>
+              'is-invalid': nestedForm.controls.population.invalid && nestedForm.controls.population.touched,
+              'is-valid': nestedForm.controls.population.valid}" id="nestedForm.controls.populationText" placeholder="Enter country population">
+              <small id="fnHelp" *ngIf="nestedForm.controls.population.errors?.required && nestedForm.controls.population.touched" class="form-text custom-invalid-feedback">Field is required</small>
    
             </div>
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-4">
               <label for="regionText" class="">Region</label>
               <input type="text" formControlName="region" [ngClass]="{'form-control': true,
-              'is-invalid': region.invalid && region.touched,
-              'is-valid': region.valid}" id="regionText" placeholder="Enter region">
-              <small id="fnHelp" *ngIf="region.errors?.required && region.touched" class="form-text custom-invalid-feedback">Field is required</small>
-              <small id="fnHelp" *ngIf="region.errors?.minlength && region.touched" class="form-text custom-invalid-feedback">Value must contain atleast 2 characters</small>
-   
+              'is-invalid': nestedForm.controls.region.invalid && nestedForm.controls.region.touched,
+              'is-valid': nestedForm.controls.region.valid}" id="nestedForm.controls.regionText" placeholder="Enter country region">
+              <small id="fnHelp" *ngIf="nestedForm.controls.region.errors?.required && nestedForm.controls.region.touched" class="form-text custom-invalid-feedback">Field is required</small>
+            </div>
+
+            <div class="form-group col-sm-8">
+              <label for="flagUrl" class="">Flag image URL</label>
+              <input type="text" formControlName="flag" [ngClass]="{'form-control': true,
+              'is-invalid': nestedForm.controls.flag.invalid && nestedForm.controls.flag.touched,
+              'is-valid': nestedForm.controls.flag.valid}" id="nestedForm.controls.flagText" placeholder="Flag image URL">
+              <small id="fnHelp" *ngIf="nestedForm.controls.flag.errors?.required && nestedForm.controls.flag.touched" class="form-text custom-invalid-feedback">Field is required</small>
             </div>
           </div>
         </div>
@@ -50,15 +54,14 @@
       <!-- address form portion -->
       <div class="row" formArrayName="languages">
         <div *ngFor="let group of languagesArray.controls; let i = index;" [formGroupName]="i">
-          <div class="col-8">
+          <div class="col-xs-6 text-left">
             <h4>{{i+1}}. Language </h4>
           </div>
-          <div class="col-4 control-buttons">
-            <button class="btn btn-primary" (click)="addLanguage()">+</button>
-            <button class="btn btn-danger" (click)="removeLanguage(i)">-</button>
+          <div class="col-xs-6 text-right">
+            <button class="btn btn-danger" (click)="removeLanguage(i)">Remove</button>
             <hr>
           </div>
-          <div class="form-group">
+          <div class="col-sm-4 form-group">
             <label for="addText">Language Name</label>
             <input type="text" formControlName="name" [ngClass]="{'form-control': true,
                 'is-invalid': group.controls.name.invalid && group.controls.name.touched,
@@ -66,37 +69,38 @@
             <small *ngIf="group.controls.name.invalid && group.controls.name.touched"
               class="form-text custom-invalid-feedback">Field is required</small>
           </div>
-          <div class="col">
+          <div class="col-sm-4">
             <div class="form-group">
               <label for="nativeName">Native Name</label>
               <input type="text" formControlName="nativeName" [ngClass]="{'form-control': true,
                 'is-invalid': group.controls.nativeName.invalid && group.controls.nativeName.touched,
-                'is-valid': group.controls.nativeName.valid}" id="nativeName" placeholder="Enter nativeName">
+                'is-valid': group.controls.nativeName.valid}" id="nativeName" placeholder="Enter Native Name">
               <small *ngIf="group.controls.nativeName.invalid && group.controls.nativeName.touched"
                 class="form-text custom-invalid-feedback">Field is required</small>
             </div>
           </div>
-          <div class="col">
+          <div class="col-sm-2">
             <div class="form-group">
-              <label for="iso639_1">Native Name</label>
+              <label for="iso639_1">Iso Code 1</label>
               <input type="text" formControlName="iso639_1" [ngClass]="{'form-control': true,
                 'is-invalid': group.controls.iso639_1.invalid && group.controls.iso639_1.touched,
-                'is-valid': group.controls.iso639_1.valid}" id="iso639_1" placeholder="Enter iso639_1">
+                'is-valid': group.controls.iso639_1.valid}" id="iso639_1" placeholder="Enter 1st Iso Code">
               <small *ngIf="group.controls.iso639_1.invalid && group.controls.iso639_1.touched"
                 class="form-text custom-invalid-feedback">Field is required</small>
             </div>
           </div>
-          <div class="col">
+          <div class="col-sm-2">
             <div class="form-group">
-              <label for="iso639_2">Native Name</label>
+              <label for="iso639_2">Iso Code 2</label>
               <input type="text" formControlName="iso639_2" [ngClass]="{'form-control': true,
                 'is-invalid': group.controls.iso639_2.invalid && group.controls.iso639_2.touched,
-                'is-valid': group.controls.iso639_2.valid}" id="iso639_2" placeholder="Enter iso639_2">
+                'is-valid': group.controls.iso639_2.valid}" id="iso639_2" placeholder="Enter 2nd Iso Code">
               <small *ngIf="group.controls.iso639_2.invalid && group.controls.iso639_2.touched"
                 class="form-text custom-invalid-feedback">Field is required</small>
             </div>
           </div>
         </div>
+        
       </div>
 
       <!-- seperator -->
@@ -107,11 +111,14 @@
       </div>
 
       <!-- final action buttons -->
-      <div class="row justify-content-center">
-        <div class="col-2">
+      <div class="row text-left">
+        <div class="col-xs-6">
           <button type="button" [disabled]="nestedForm.invalid" (click)="submitHandler()"
             class="btn btn-primary">Submit</button>
         </div>
+        <div class="col-xs-6 text-right">
+          <button class="btn btn-primary" (click)="addLanguage()">Add Language</button>
+        </div>  
       </div>
     </form>
   </div>
