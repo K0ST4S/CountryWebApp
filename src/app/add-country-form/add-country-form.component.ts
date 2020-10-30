@@ -44,7 +44,6 @@ export class AddCountryFormComponent implements OnInit {
   }
 
   submitHandler() : void {
-    console.log(this.nestedForm.value);
     this._http.invokeAddCountry(this.nestedForm.value);
   }
 
@@ -52,15 +51,4 @@ export class AddCountryFormComponent implements OnInit {
   {
     return <FormArray>this.nestedForm.get('languages');
   }
-
-  findInvalidControls() {
-    var invalid = [];
-    var controls = this.nestedForm.controls;
-    for (var name in controls) {
-        if (controls[name].invalid) {
-            invalid.push(name);
-        }
-    }
-    console.log(invalid);
-}
 }

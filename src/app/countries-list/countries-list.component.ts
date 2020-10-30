@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Country } from '../country';
 import { HttpService } from './../services/http.service';
 import { UtilService } from './../services/util.service';
 
@@ -35,7 +36,7 @@ export class CountriesListComponent implements OnInit {
     });
   }
 
-  deleteCountry(country: any) {
+  deleteCountry(country: Country) {
     const index: number = this.countries.indexOf(country);
     if (index !== -1) {
         this.countries.splice(index, 1);

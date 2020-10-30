@@ -16,7 +16,6 @@ export class CountryCardComponent implements OnInit {
   }
 
   onUpdateDetailsPage() : void {
-    console.log('onUpdateDetailsPage');
     this._http.invokeUpdateDetailsPage(this.country);
   }
 
