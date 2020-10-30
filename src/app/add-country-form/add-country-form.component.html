@@ -54,6 +54,9 @@
       <!-- address form portion -->
       <div class="row" formArrayName="languages">
         <div *ngFor="let group of languagesArray.controls; let i = index;" [formGroupName]="i">
+          <div class="col-xs-12">
+            <hr>
+          </div>
           <div class="col-xs-6 text-left">
             <h4>{{i+1}}. Language </h4>
           </div>
