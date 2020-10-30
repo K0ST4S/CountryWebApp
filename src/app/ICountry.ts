@@ -1,6 +1,6 @@
 import { Language } from './Language';
 
-export interface Country {
+export interface ICountry {
     name: string,
     capital: string,
     region: string,

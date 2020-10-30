@@ -2,34 +2,34 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
 import { Subject  } from 'rxjs';
-import { Country } from '../country';
+import { ICountry } from '../ICountry';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
-  public countryDeleteEvent = new Subject<Country>();
-  public addCountryEvent = new Subject<Country>();
-  public updateDetailsPageEvent = new ReplaySubject<Country>(undefined);
+  public countryDeleteEvent = new Subject<ICountry>();
+  public addCountryEvent = new Subject<ICountry>();
+  public updateDetailsPageEvent = new ReplaySubject<ICountry>(undefined);
   constructor(private http: HttpClient) { }
 
-  getCountries() : Observable<Country[]>
+  getCountries() : Observable<ICountry[]>
   {
-    return this.http.get<Country[]>('https://restcountries.eu/rest/v2/all');
+    return this.http.get<ICountry[]>('https://restcountries.eu/rest/v2/all');
   }
 
   invokeAddCountry(data:any)
   {
-    this.addCountryEvent.next(data as Country)
+    this.addCountryEvent.next(data as ICountry)
   }
 
-  invokeUpdateDetailsPage(data: Country)
+  invokeUpdateDetailsPage(data: ICountry)
   {
     this.updateDetailsPageEvent.next(data);
   }
 
-  invokeCountryDelete(data: Country)
+  invokeCountryDelete(data: ICountry)
   {
       this.countryDeleteEvent.next(data);
   }

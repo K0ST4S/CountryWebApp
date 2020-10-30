@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Country } from '../country';
+import { ICountry } from '../ICountry';
 import { HttpService } from './../services/http.service';
 import { UtilService } from './../services/util.service';
 
@@ -10,7 +10,7 @@ import { UtilService } from './../services/util.service';
 })
 export class CountriesListComponent implements OnInit {
 
-  countries: Array<any>;
+  countries: Array<ICountry>;
   error: string;
   sortFields: Array<string> = [
     "name",
@@ -36,7 +36,7 @@ export class CountriesListComponent implements OnInit {
     });
   }
 
-  deleteCountry(country: Country) {
+  deleteCountry(country: ICountry) {
     const index: number = this.countries.indexOf(country);
     if (index !== -1) {
         this.countries.splice(index, 1);

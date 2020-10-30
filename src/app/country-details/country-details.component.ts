@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Country } from '../country';
+import { ICountry } from '../ICountry';
 import { HttpService } from '../services/http.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { HttpService } from '../services/http.service';
 })
 export class CountryDetailsComponent implements OnInit {
 
-  country: Country;
+  country: ICountry;
   constructor(private _http: HttpService) 
   { 
   }

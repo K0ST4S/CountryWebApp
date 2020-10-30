@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpService } from '../services/http.service';
-import { Country } from './../country'
+import { ICountry } from './../ICountry'
 
 @Component({
   selector: 'app-country-card',
@@ -8,7 +8,7 @@ import { Country } from './../country'
   styleUrls: ['./country-card.component.scss']
 })
 export class CountryCardComponent implements OnInit {
-  @Input('country') country: Country;
+  @Input('country') country: ICountry;
   constructor(private _http: HttpService) { }
 
   ngOnInit(): void {
