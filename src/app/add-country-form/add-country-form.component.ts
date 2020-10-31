@@ -18,7 +18,7 @@ export class AddCountryFormComponent implements OnInit {
       name: [null, Validators.required],
       region: [null, Validators.required],
       flag: [null, Validators.required],
-      population: [null, Validators.required],
+      population: [null, [Validators.required, Validators.pattern('[0-9]*')]],
       languages: this._fb.array([this.addLanguagesGroup()])
     });
   }
@@ -50,5 +50,21 @@ export class AddCountryFormComponent implements OnInit {
   get languagesArray()
   {
     return <FormArray>this.nestedForm.get('languages');
+  }
+
+  get name() {
+    return this.nestedForm.get('name');
+  }
+
+  get region() {
+    return this.nestedForm.get('region');
+  }
+
+  get population() {
+    return this.nestedForm.get('population');
+  }
+
+  get flag() {
+    return this.nestedForm.get('flag');
   }
 }
