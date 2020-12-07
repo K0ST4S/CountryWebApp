@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
-import { Subject  } from 'rxjs';
+import { Subject } from 'rxjs';
 import { ICountry } from '../ICountry';
+import { NgxSpeechToTextService } from 'ngx-speech-to-text';
 
 @Injectable({
   providedIn: 'root'
@@ -11,26 +12,30 @@ export class HttpService {
 
   public countryDeleteEvent = new Subject<ICountry>();
   public addCountryEvent = new Subject<ICountry>();
-  public updateDetailsPageEvent = new ReplaySubject<ICountry>(undefined);
-  constructor(private http: HttpClient) { }
+  public selectedCountry: ICountry;
+  constructor(private speechRecognitionService: NgxSpeechToTextService,
+    private http: HttpClient) {
+    this.speechRecognitionService.init();
+    this.speechRecognitionService.start();
+  }
 
-  getCountries() : Observable<ICountry[]>
-  {
+  ngOnInit() {
+
+  }
+
+  getCountries(): Observable<ICountry[]> {
     return this.http.get<ICountry[]>('https://restcountries.eu/rest/v2/all');
   }
 
-  invokeAddCountry(data:any)
-  {
+  invokeAddCountry(data: any) {
     this.addCountryEvent.next(data as ICountry)
   }
 
-  invokeUpdateDetailsPage(data: ICountry)
-  {
-    this.updateDetailsPageEvent.next(data);
+  invokeUpdateDetailsPage(data: ICountry) {
+    this.selectedCountry = data;
   }
 
-  invokeCountryDelete(data: ICountry)
-  {
-      this.countryDeleteEvent.next(data);
+  invokeCountryDelete(data: ICountry) {
+    this.countryDeleteEvent.next(data);
   }
 }

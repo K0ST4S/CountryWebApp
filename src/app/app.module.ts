@@ -14,6 +14,9 @@ import { HttpService } from './services/http.service';
 import { SortByPipe } from './pipes/sort-by.pipe';
 import { HomeComponent } from './home/home.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { SearchComponent } from './search/search.component';
+import { NgxSpeechToTextModule } from 'ngx-speech-to-text';
+import { SpeechSynthesisModule } from '@kamiazya/ngx-speech-synthesis';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AddCountryFormComponent,
     SortByPipe,
     RoutingComponents,
-    HomeComponent
+    HomeComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,14 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FormsModule,
     CommonModule,
     NgxPaginationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpeechToTextModule,
+    SpeechSynthesisModule.forRoot({
+      lang: 'en',
+      volume: 1.0,
+      pitch: 1.0,
+      rate: 1.0,
+    }),
   ],
   providers: [HttpService, UtilService],
   bootstrap: [AppComponent]

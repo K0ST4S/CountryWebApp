@@ -40,7 +40,7 @@ export class CountriesListComponent implements OnInit {
     const index: number = this.countries.indexOf(country);
     if (index !== -1) {
         this.countries.splice(index, 1);
-    }        
+    }     
   }
 }
 

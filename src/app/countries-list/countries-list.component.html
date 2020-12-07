@@ -2,29 +2,34 @@
   <div class="col-sm-12">
     <div class="panel panel-default">
       <div class="panel-body">
-        <div class="col-sm-4">
-          <label for="sort-field">Sort By</label>
-          <select class="form-control" name="sort-field" id="sort-field" [(ngModel)]="sortField">
-            <option *ngFor="let field of sortFields" [value]="field">
-              {{ utilService.capitalize(field) }}
-            </option>
-          </select>
-        </div>
-        <div class="col-sm-4">
-          <label for="sort-direction">Sort Direction</label>
-          <div>
-
-            <button class="btn btn-secondary" [ngClass]="{'btn-success': sortDirection == 'asc'}"
-              (click)="sortDirection = 'asc'">
-              Asc
-            </button>
-
-            <button class="btn btn-secondary" [ngClass]="{'btn-success': sortDirection == 'desc'}"
-              (click)="sortDirection = 'desc'">
-              Desc
-            </button>
-
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="col-sm-4">
+            <label for="sort-field">Sort By</label>
+            <select class="form-control" name="sort-field" id="sort-field" [(ngModel)]="sortField">
+              <option *ngFor="let field of sortFields" [value]="field">
+                {{ utilService.capitalize(field) }}
+              </option>
+            </select>
           </div>
+          <div class="col-sm-4">
+            <label for="sort-direction">Sort Direction</label>
+            <div>
+
+              <button class="btn btn-secondary" [ngClass]="{'btn-success': sortDirection == 'asc'}"
+                (click)="sortDirection = 'asc'">
+                Asc
+              </button>
+
+              <button class="btn btn-secondary" [ngClass]="{'btn-success': sortDirection == 'desc'}"
+                (click)="sortDirection = 'desc'">
+                Desc
+              </button>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <app-search [countries]="countries"></app-search>
         </div>
       </div>
     </div>
