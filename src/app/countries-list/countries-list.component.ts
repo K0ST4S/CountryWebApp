@@ -19,7 +19,7 @@ export class CountriesListComponent implements OnInit {
   sortField: string = 'Population';
   sortDirection: string = 'asc';
   p: number = 1;
-  constructor(private _http: HttpService) { }
+  constructor(private _http: HttpService, private utilService : UtilService) { }
 
   ngOnInit() {
     // get REST API countries data

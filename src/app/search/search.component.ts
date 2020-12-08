@@ -23,7 +23,6 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     if (!SearchComponent.initialized) {
       this.speechRecognitionService.responseText$.subscribe(res => {
-        console.log(res);
         this.setText(res);
       });
       SearchComponent.initialized = true;
