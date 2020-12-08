@@ -11,6 +11,7 @@ To check if you already have it:
 Run `npm version`
 
 Run `node -v`
+
 To download: https://nodejs.org/en/
 
 For more information: https://angular.io/guide/setup-local
