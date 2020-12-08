@@ -5,6 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SortByPipe implements PipeTransform {
 
+  // pipe used for sorting countries list
   transform(array: Array<string>, args?: any): any {
     if (array)
     {

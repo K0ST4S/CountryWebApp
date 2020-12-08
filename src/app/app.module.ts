@@ -39,10 +39,10 @@ import { SpeechSynthesisModule } from '@kamiazya/ngx-speech-synthesis';
     ReactiveFormsModule,
     NgxSpeechToTextModule,
     SpeechSynthesisModule.forRoot({
-      lang: 'en',
-      volume: 1.0,
-      pitch: 1.0,
-      rate: 1.0,
+      lang: 'en', // language to speak with
+      volume: 1.0, // volume of the speech
+      pitch: 1.0, // voice pitch
+      rate: 1.0, // voice speed
     }),
   ],
   providers: [HttpService, UtilService],

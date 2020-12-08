@@ -30,21 +30,21 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  // Sets text to input field
   setText(text: string) {
     this.input.nativeElement.focus();
     this.input.nativeElement.value = text;
 
     let selectedCountry: ICountry = null;
-    this.countries.forEach(country => {
-
+    this.countries.forEach(country => { // find a country that matches voice input results
       if (country.name.toLowerCase() === text.toLowerCase()) {
         selectedCountry = country;
       }
     });
 
+    // if country is matched
     if (selectedCountry) {
-      console.log("Invoking on selected " + selectedCountry.name + " with pop " + selectedCountry.population);
-      this._http.invokeUpdateDetailsPage(selectedCountry);
+      this._http.invokeUpdateDetailsPage(selectedCountry); // display the country
       this.zone.run(() => {
         this.router.navigate(['/details', { synthesis: true }]);
       });

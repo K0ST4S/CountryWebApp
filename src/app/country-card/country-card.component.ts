@@ -15,10 +15,12 @@ export class CountryCardComponent implements OnInit {
     
   }
 
+  // "Details button" callback
   onUpdateDetailsPage() : void {
     this._http.invokeUpdateDetailsPage(this.country);
   }
 
+  // "Delete button" callback
   deleteCountry() {
     this._http.invokeCountryDelete(this.country);
   }        

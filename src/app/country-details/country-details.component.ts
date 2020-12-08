@@ -25,24 +25,23 @@ export class CountryDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.country = this._http.selectedCountry;
+    this.country = this._http.selectedCountry; // assign the country
 
-
-
+    // construct country details to speak out loud
     const details = [
       "Country name is " + this.country.name,
       "Capital is " + this.country.capital,
       this.country.name + " is located in " + this.country.region,
-      (this.country.languages.length > 1 ? "Languages are: " : "Language is ") + this.country.languages.map(function (a) { return a.name }).join(', ')
-
+      (this.country.languages.length > 1 ? "Languages are: " : "Language is ") + this.country.languages.map(function (a) { return a.name }).join(', ') // account for single/plural form
     ];
     this.speak(details);
 
+    // handle event listening
     if (!CountryDetailsComponent.initialized) {
       this.speechRecognitionService.responseText$.subscribe(res => {
         console.log(res);
-        if (res.toLowerCase() === "back" || res.toLowerCase() === "return") {
-          this.zone.run(() => {
+        if (res.toLowerCase() === "back" || res.toLowerCase() === "return") { // listen for "back" or "Return" words from user
+          this.zone.run(() => { // in that case return to home page
             this.onBack();
             this.router.navigate(['/']);
           })
@@ -52,6 +51,7 @@ export class CountryDetailsComponent implements OnInit {
     }
   }
 
+  // uses speech synthesis to speak out the array of strings
   speak(contents: string[]) {
     for (const text of contents) {
       const v = this.f.text(text);
@@ -59,6 +59,7 @@ export class CountryDetailsComponent implements OnInit {
     }
   }
 
+  // back command callback
   onBack() {
     this.svc.cancel();
   }

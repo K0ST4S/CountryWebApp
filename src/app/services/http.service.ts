@@ -23,18 +23,22 @@ export class HttpService {
 
   }
 
+  // downloads countries data
   getCountries(): Observable<ICountry[]> {
     return this.http.get<ICountry[]>('https://restcountries.eu/rest/v2/all');
   }
 
+  // invokes addCountryEvent
   invokeAddCountry(data: any) {
     this.addCountryEvent.next(data as ICountry)
   }
 
+  // updates details page
   invokeUpdateDetailsPage(data: ICountry) {
     this.selectedCountry = data;
   }
 
+  // delete country callback
   invokeCountryDelete(data: ICountry) {
     this.countryDeleteEvent.next(data);
   }

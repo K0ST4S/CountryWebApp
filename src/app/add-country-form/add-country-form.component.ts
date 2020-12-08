@@ -14,15 +14,17 @@ export class AddCountryFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // create a form group with input validation
     this.nestedForm = this._fb.group({
       name: [null, Validators.required],
       region: [null, Validators.required],
       flag: [null, Validators.required],
-      population: [null, [Validators.required, Validators.pattern('[0-9]*')]],
+      population: [null, [Validators.required, Validators.pattern('[0-9]*')]], // numbers regex validation
       languages: this._fb.array([this.addLanguagesGroup()])
     });
   }
 
+  // method to add language form
   addLanguagesGroup()
   {
     return this._fb.group({
@@ -47,6 +49,7 @@ export class AddCountryFormComponent implements OnInit {
     this._http.invokeAddCountry(this.nestedForm.value);
   }
 
+  /// -------- START form elements getters ----------
   get languagesArray()
   {
     return <FormArray>this.nestedForm.get('languages');
@@ -67,4 +70,5 @@ export class AddCountryFormComponent implements OnInit {
   get flag() {
     return this.nestedForm.get('flag');
   }
+  /// -------- END form elements getters ----------
 }
